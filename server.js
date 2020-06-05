@@ -14,7 +14,7 @@ app.use(methodOverride("_method")); // allow POST, PUT and DELETE from a form
 
 app.use(
   session({
-    secret: process.env.SECRET,
+    secret: "SportySpice",
     resave: false,
     saveUninitialized: false,
   })
