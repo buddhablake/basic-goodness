@@ -73,7 +73,7 @@ products.get("/:collection/:artistId/:id", (req, res) => {
   });
 });
 
-//============
+//=============
 //CREATE
 //============
 //Creates new product
