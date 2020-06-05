@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+  </head>
+  <body>
+
+    <!-- I have access to both the artist object and the product object. -->
+
+    <h2><%=product.title%></h2>
+
+    <img src="<%=product.images[0]%>" alt="">
+
+<div class="artist">
+  <%=artist.firstName%>
+</div>
+
+
+
+<%=user._id%>
+
+<%=artist._id%>
+
+
+<% if(user._id == artist._id){%>
+<p>logged in</p>
+<%}%>
+    <%# down here i can have an if statement that says if the current user id and the artist id match then the user can edit or delete the product. %>
+
+    <% if(user._id == artist._id){%>
+      <script type="text/javascript">
+        const body = document.querySelector('body')
+        const deleteBtn = document.createElement('button')
+        deleteBtn.textContent = "Delete"
+      body.append(deleteBtn)
+      </script>
+  <%}%>
+  </body>
+</html>

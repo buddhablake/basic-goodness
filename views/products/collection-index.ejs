@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+  </head>
+  <body>
+    <h1><%=collectionTitle%></h1>
+    <%for(let i =0; i < products.length; i++){%>
+<a href="/products/<%=products[i].category%>/<%=products[i].artist_id%>/<%=products[i].id%>">
+      <div class="product">
+        <img src="<%=products[i].images[0]%>" alt="<%=products[i].title%>">
+        <div class="product-details">
+            <h3><%=products[i].title%></h3>
+            <p>$<%=products[i].price%></p>
+            <p>
+              <%if(products[i].qty > 0){%>
+                In Stock
+              <%} else {%>
+                Out of stock
+              <%}%>
+
+            </p>
+        </div>
+      </div>
+      </a>
+    <%}%>
+  </body>
+</html>

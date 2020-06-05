@@ -1,9 +1,24 @@
 const express = require("express");
 const methodOverride = require("method-override");
 const mongoose = require("mongoose");
+const session = require("express-session");
 const app = express();
 const db = mongoose.connection;
 require("dotenv").config();
+
+app.use(express.static("public"));
+app.use(express.urlencoded({ extended: false })); //
+
+//use method override
+app.use(methodOverride("_method")); // allow POST, PUT and DELETE from a form
+
+app.use(
+  session({
+    secret: process.env.SECRET,
+    resave: false,
+    saveUninitialized: false,
+  })
+);
 
 const PORT = process.env.PORT;
 const MONGODB_URI = process.env.MONGODB_URI;
@@ -21,17 +36,30 @@ db.on("error", (err) => console.log(err.message + " is Mongod not running?"));
 db.on("connected", () => console.log("mongo connected: ", MONGODB_URI));
 db.on("disconnected", () => console.log("mongo disconnected"));
 
-app.use(express.urlencoded({ extended: false })); //
+//=============
+//CONTROLLERS
+//=============
+const usersControllers = require("./controllers/users_controllers.js");
+app.use("/users", usersControllers);
 
-//use method override
-app.use(methodOverride("_method")); // allow POST, PUT and DELETE from a form
+const usersSessionsControllers = require("./controllers/users_sessions_controllers.js");
+app.use("/users/sessions", usersSessionsControllers);
+
+const artistsControllers = require("./controllers/artists_controllers.js");
+app.use("/artists", artistsControllers);
+
+const artistsSessionsControllers = require("./controllers/artists_sessions_controllers.js");
+app.use("/artists/sessions", artistsSessionsControllers);
+
+const productsControllers = require("./controllers/products_controllers.js");
+app.use("/products", productsControllers);
 
 //___________________
 // Routes
 //___________________
 //localhost:3000
 app.get("/", (req, res) => {
-  res.send("Hello World!");
+  res.render("index.ejs");
 });
 
 //___________________
