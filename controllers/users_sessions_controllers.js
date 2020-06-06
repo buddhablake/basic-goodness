@@ -15,7 +15,9 @@ const usersSessions = express.Router();
 //============
 
 usersSessions.get("/new", (req, res) => {
-  res.render("users/sessions/new.ejs");
+  res.render("users/sessions/new.ejs", {
+    user: req.session.currentUser,
+  });
 });
 
 usersSessions.post("/", (req, res) => {

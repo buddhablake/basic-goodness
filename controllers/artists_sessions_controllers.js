@@ -15,7 +15,9 @@ const artistsSessions = express.Router();
 //============
 
 artistsSessions.get("/new", (req, res) => {
-  res.render("artists/sessions/new.ejs");
+  res.render("artists/sessions/new.ejs", {
+    user: req.session.currentUser,
+  });
 });
 
 artistsSessions.post("/", (req, res) => {

@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+    <link rel="stylesheet" href="/css/main.css">
+  </head>
+  <body>
+    <header>
+      <a href="/">
+        <h1>Basic Goodness</h1>
+      </a>
+
+      <nav>
+        <a href="/artists/sessions/new">Artist Log In</a>
+        <a href="/users/sessions/new">User Log In</a>
+        <a href="/users/new">Sign Up</a>
+
+
+        <%if(user && user.role === 'artist'){%>
+          <form class="" action="/artists/sessions?_method=DELETE" method="post">
+        <input type="submit" name="" value="Artist Log Out">
+          </form>
+        <%} else if(user && user.role === 'user') {%>
+          <form class="" action="/users/sessions?_method=DELETE" method="post">
+        <input type="submit" name="" value="User Log Out">
+          </form>
+        <%}%>
+
+      </nav>
+
+    </header>
+
+    <%- body %>
+  </body>
+</html>

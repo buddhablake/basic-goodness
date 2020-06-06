@@ -1,8 +1,7 @@
-
-    <form class="" action="/products" method="post">
+<form class="" action="/products/<%=product._id%>?_method=PUT" method="post">
       <fieldset>
         <legend>
-          Add New Product
+          Update Product
         </legend>
 
         <label for="title">Title</label>
@@ -38,6 +37,6 @@
 
           <option value="decor">Decor</option>
         </select>
-        <input type="submit" name="" value="Create">
+        <input type="submit" name="" value="Update">
       </fieldset>
     </form>

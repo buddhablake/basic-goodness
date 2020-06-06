@@ -2,13 +2,16 @@ const express = require("express");
 const methodOverride = require("method-override");
 const mongoose = require("mongoose");
 const session = require("express-session");
+const expressLayouts = require("express-ejs-layouts");
 const app = express();
 const db = mongoose.connection;
 require("dotenv").config();
 
+app.set("view engine", "ejs");
+
 app.use(express.static("public"));
 app.use(express.urlencoded({ extended: false })); //
-
+app.use(expressLayouts);
 //use method override
 app.use(methodOverride("_method")); // allow POST, PUT and DELETE from a form
 
@@ -59,7 +62,9 @@ app.use("/products", productsControllers);
 //___________________
 //localhost:3000
 app.get("/", (req, res) => {
-  res.render("index.ejs");
+  res.render("index.ejs", {
+    user: req.session.currentUser,
+  });
 });
 
 //___________________

@@ -35,7 +35,22 @@ const isArtist = (req, res, next) => {
 //=============
 //New product form
 products.get("/new", isArtist, (req, res) => {
-  res.render("products/new.ejs");
+  res.render("products/new.ejs", {
+    user: req.session.currentUser,
+  });
+});
+
+products.get("/edit/:id", (req, res) => {
+  Product.findOne({ _id: req.params.id }, (err, product) => {
+    if (err) {
+      res.send("There was an error, please go back and try again.");
+    } else {
+      res.render("products/edit.ejs", {
+        product: product,
+        user: req.session.currentUser,
+      });
+    }
+  });
 });
 
 //Collections Indexes
@@ -47,12 +62,14 @@ products.get("/:collection", (req, res) => {
       res.render("products/collection-index.ejs", {
         products: products,
         collectionTitle: req.params.collection.toUpperCase(),
+        user: req.session.currentUser,
       });
     }
   });
 });
 
-products.get("/:collection/:artistId/:id", (req, res) => {
+// product show page
+products.get("/:artistId/:id", (req, res) => {
   Product.findOne({ _id: req.params.id }, (err, product) => {
     if (err) {
       res.send(err.message);
@@ -87,6 +104,26 @@ products.post("/", (req, res) => {
       res.redirect("/");
     }
   });
+});
+
+//=============
+//EDIT/UPDATE
+//============
+products.put("/:id", (req, res) => {
+  Product.findByIdAndUpdate(
+    req.params.id,
+    req.body,
+    { new: true },
+    (err, updatedProduct) => {
+      if (err) {
+        res.send("There was an error, please go back and try again.");
+      } else {
+        res.redirect(
+          "/products/" + updatedProduct.artist_id + "/" + req.params.id
+        );
+      }
+    }
+  );
 });
 
 module.exports = products;

@@ -18,23 +18,16 @@
 
 
 
-<%=user._id%>
-
-<%=artist._id%>
 
 
-<% if(user._id == artist._id){%>
-<p>logged in</p>
-<%}%>
-    <%# down here i can have an if statement that says if the current user id and the artist id match then the user can edit or delete the product. %>
 
-    <% if(user._id == artist._id){%>
-      <script type="text/javascript">
-        const body = document.querySelector('body')
-        const deleteBtn = document.createElement('button')
-        deleteBtn.textContent = "Delete"
-      body.append(deleteBtn)
-      </script>
+    <% if(user && (user._id == artist._id)){%>
+    <form class="">
+      <input type="submit" name="" value="Delete">
+    </form>
+    <a href="/products/edit/<%=product._id%>"> <button type="button" name="button">Edit</button> </a>
   <%}%>
+
+
   </body>
 </html>

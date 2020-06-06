@@ -7,7 +7,7 @@
   <body>
     <h1><%=collectionTitle%></h1>
     <%for(let i =0; i < products.length; i++){%>
-<a href="/products/<%=products[i].category%>/<%=products[i].artist_id%>/<%=products[i].id%>">
+<a href="/products/<%=products[i].artist_id%>/<%=products[i].id%>">
       <div class="product">
         <img src="<%=products[i].images[0]%>" alt="<%=products[i].title%>">
         <div class="product-details">
