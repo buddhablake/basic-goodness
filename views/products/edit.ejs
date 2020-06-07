@@ -1,3 +1,9 @@
+
+<% if(user && (user._id === product.artist_id || user.role === 'admin')){%>
+
+
+
+
 <form class="" action="/products/<%=product._id%>?_method=PUT" method="post">
       <fieldset>
         <legend>
@@ -40,3 +46,6 @@
         <input type="submit" name="" value="Update">
       </fieldset>
     </form>
+<%}else {%>
+  <p>Sorry you don't have access to this page. <a href="/">Click here to return to the home page.</a></p>
+<%}%>

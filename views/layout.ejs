@@ -21,7 +21,7 @@
           <form class="" action="/artists/sessions?_method=DELETE" method="post">
         <input type="submit" name="" value="Artist Log Out">
           </form>
-        <%} else if(user && user.role === 'user') {%>
+        <%} else if(user && (user.role === 'user' || user.role === 'admin')) {%>
           <form class="" action="/users/sessions?_method=DELETE" method="post">
         <input type="submit" name="" value="User Log Out">
           </form>

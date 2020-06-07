@@ -126,4 +126,19 @@ products.put("/:id", (req, res) => {
   );
 });
 
+//=============
+//DELETE
+//============
+products.delete("/delete/:id", (req, res) => {
+  Product.findByIdAndRemove(req.params.id, (err, deletedProduct) => {
+    if (err) {
+      res.send(
+        "Something went wrong on our end. Please click the back button and try your request again."
+      );
+    } else {
+      res.redirect("/");
+    }
+  });
+});
+
 module.exports = products;
