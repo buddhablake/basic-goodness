@@ -1,17 +1,22 @@
-<!DOCTYPE html>
-<html lang="en" dir="ltr">
-  <head>
-    <meta charset="utf-8">
-    <title></title>
-  </head>
-  <body>
+
+<div class="collection-title">
+  <hr>
+
     <h1><%=collectionTitle%></h1>
+<hr>
+    </div>
+    <div class="products">
+
+
     <%for(let i =0; i < products.length; i++){%>
-<a href="/products/<%=products[i].artist_id%>/<%=products[i].id%>">
+
       <div class="product">
-        <img src="<%=products[i].images[0]%>" alt="<%=products[i].title%>">
+        <a href="/products/<%=products[i].artist_id%>/<%=products[i].id%>">
+        <img src="<%=products[i].images%>" alt="<%=products[i].title%>">
+
         <div class="product-details">
             <h3><%=products[i].title%></h3>
+              </a>
             <p>$<%=products[i].price%></p>
             <p>
               <%if(products[i].qty > 0){%>
@@ -22,8 +27,9 @@
 
             </p>
         </div>
-      </div>
-      </a>
+
+
+
+        </div>
     <%}%>
-  </body>
-</html>
+  </div>

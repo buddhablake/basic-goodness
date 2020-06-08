@@ -1,17 +1,203 @@
+@import url("https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@200;400&display=swap");
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+* a,
+* button {
+  color: #261520;
+  cursor: pointer;
+}
+
+body {
+  /* background: #d4ab807a; */
+  font-family: "Noto Serif JP", serif;
+  font-weight: 200;
+  color: #261520;
+}
+
 header {
   display: flex;
   justify-content: space-between;
-  padding: 2em;
+  padding: 2em 3em;
+  position: static;
+  align-items: center;
+  height: 200px;
 }
 
+nav {
+  display: flex;
+  height: 100%;
+  align-items: center;
+}
+
+.dropdown {
+  position: relative;
+  display: inline-block;
+  cursor: pointer;
+}
+
+.dropdown:hover .dropdown-content {
+  opacity: 1;
+  z-index: 1;
+}
+
+.dropdown-content {
+  opacity: 0;
+  position: absolute;
+  background: white;
+  z-index: -1;
+  border: 1px solid black;
+  padding: 1em;
+}
+
+.dropdown-content ul {
+  list-style: none;
+}
+
+/* Root */
 .collections {
   display: grid;
-  grid-template-columns: repeat(2, minmax(300px, 1fr));
-  grid-gap: 2em;
+
+  grid-gap: 3em;
+  padding: 2em 4em;
+}
+
+.collection {
+  position: relative;
+  height: 80vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  color: white;
+  background: rgba(0, 0, 0, 0.25);
+  overflow: hidden;
+  padding: 1em;
+}
+
+.collection-overlay {
+  position: absolute;
+  z-index: 0;
+  border: 3px solid white;
+  background: rgba(0, 0, 0, 0.2);
+  top: 15px;
+  bottom: 15px;
+  right: 15px;
+  left: 15px;
 }
 
 .collection img {
   width: 100%;
+  height: 100%;
+  object-fit: cover;
+  position: absolute;
+  z-index: -1;
+  top: 0;
+  left: 0;
+  transition: all 0.5s ease;
+}
+
+.collection:hover img {
+  transform: scale(1.03);
+}
+
+.collection h2 {
+  color: white;
+  font-size: 3em;
+  width: 100%;
+  text-align: center;
+  padding: 0.5em 0;
+  font-weight: 200;
+  z-index: 3;
+}
+
+.collection a {
+  z-index: 2;
+}
+
+.collection button {
+  background: rgba(0, 0, 0, 0.3);
+  outline: none;
+  color: white;
+  font-size: 1em;
+  padding: 0.75em;
+  border: 3px solid white;
+  font-family: "Georgia Pro";
+}
+
+/* Collections Index page */
+
+.collection-title {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.collection-title h1 {
+  font-weight: 200;
+}
+
+.collection-title hr {
+  width: 25%;
+  height: 2px;
+}
+
+.products {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  padding: 2em 4em;
+}
+
+.product {
+}
+
+.product img {
+  width: 100%;
   height: 400px;
   object-fit: cover;
+}
+
+/*products index page */
+.products {
+  display: grid;
+  grid-gap: 3em;
+}
+
+.product {
+}
+
+.product img {
+  height: 500px;
+}
+
+/* show page  */
+.product-container {
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+}
+
+.product-container img {
+  width: 100%;
+}
+
+.artist-container {
+  display: flex;
+}
+
+.artist-container img {
+  width: 200px;
+  height: 200px;
+  object-fit: cover;
+  object-position: center;
+  border-radius: 50%;
+}
+
+footer {
+  min-height: 50vh;
+  background: #d9b07e;
 }

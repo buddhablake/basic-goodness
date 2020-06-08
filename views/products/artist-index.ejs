@@ -1,0 +1,30 @@
+
+
+
+<div class="products">
+
+
+<%for(let i =0; i < products.length; i++){%>
+
+  <div class="product">
+    <a href="/products/<%=products[i].artist_id%>/<%=products[i].id%>">
+    <img src="<%=products[i].images%>" alt="<%=products[i].title%>">
+    <div class="product-details">
+        <h3><%=products[i].title%></h3>
+        </a>
+        <p>$<%=products[i].price%></p>
+        <p>
+          <%if(products[i].qty > 0){%>
+            In Stock
+          <%} else {%>
+            Out of stock oh no
+          <%}%>
+
+        </p>
+        </div>
+    </div>
+
+
+<%}%>
+
+  </div>

@@ -78,7 +78,6 @@ products.get("/:artistId/:id", (req, res) => {
         if (err) {
           res.send(err.message);
         } else {
-          console.log(req.session.currentUser);
           res.render("products/show.ejs", {
             product: product,
             artist: artist,

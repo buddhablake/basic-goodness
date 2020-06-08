@@ -1,0 +1,28 @@
+
+
+<div class="dropdown">
+  <h3>Hi, <%=user.firstName%> <i class="far fa-heart"></i> <i class="fas fa-chevron-down"></i></h3>
+  <div class="dropdown-content">
+
+
+  <ul>
+    <li>
+    <a href="/products/new">Add product</a>
+  </li>
+
+  <li>
+    <a href="/artists/products/<%=user._id%>">My products</a>
+  </li>
+
+
+    <li>
+      <form class="" action="/artists/sessions?_method=DELETE" method="post">
+        <a href="javascript:{}" onclick="document.querySelector('form').submit();">Log out</a>
+    <!-- <input type="submit" name="" value="Log Out"> -->
+    </form>
+    </li>
+
+  </ul>
+
+  </div>
+</div>

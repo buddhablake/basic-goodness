@@ -9,7 +9,9 @@ const users = express.Router();
 
 //test route
 users.get("/new", (req, res) => {
-  res.render("users/new.ejs");
+  res.render("users/new.ejs", {
+    user: req.session.currentUser,
+  });
 });
 
 users.post("/", (req, res) => {

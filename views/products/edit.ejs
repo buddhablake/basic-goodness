@@ -11,37 +11,56 @@
         </legend>
 
         <label for="title">Title</label>
-        <input type="text" id="title" name="title" value="">
+        <input type="text" id="title" name="title" value="<%=product.title%>">
 
-        <label for="description"></label>
-        <textarea name="description" rows="8" id="description"></textarea>
+        <label for="description">Description</label>
+        <textarea name="description" rows="8" id="description"><%=product.description%></textarea>
 
         <fieldset>
-          <legend>Images</legend>
+          <legend>Product Image</legend>
 
-        <input type="url" name="images" value="" required>
-        <input type="url" name="images" value="" >
-        <input type="url" name="images" value="" >
+        <input type="url" name="images" value="<%=product.images%>" required>
+
 
             </fieldset>
 
         <label for="price">Price</label>
-        <input type="number" id="price" name="price" value="">
+        <input type="number" id="price" name="price" value="<%=product.price%>">
 
         <label for="qty">Quantity</label>
-        <input type="number" id="qty" name="qty" value="">
+        <input type="number" id="qty" name="qty" value="<%=product.qty%>">
 
         <label for="category"></label>
         <select class="" id="category" name="category">
-          <option value="dinnerware">Dinnerware</option>
+          <option value="dinnerware"
+            <%if(product.category === "dinnerware"){%>
+              selected
+            <%}%>
+          >Dinnerware</option>
 
-          <option value="cookware">Cookware</option>
+          <option value="cookware"
+          <%if(product.category === "cookware"){%>
+            selected
+          <%}%>
+          >Cookware</option>
 
-          <option value="bakeware">Bakeware</option>
+          <option value="bakeware"
+          <%if(product.category === "bakeware"){%>
+            selected
+          <%}%>
+          >Bakeware</option>
 
-          <option value="cutlery">Cutlery</option>
+          <option value="cutlery"
+          <%if(product.category === "cutlery"){%>
+            selected
+          <%}%>
+          >Cutlery</option>
 
-          <option value="decor">Decor</option>
+          <option value="decor"
+          <%if(product.category === "decor"){%>
+            selected
+          <%}%>
+          >Decor</option>
         </select>
         <input type="submit" name="" value="Update">
       </fieldset>

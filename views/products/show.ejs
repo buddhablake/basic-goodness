@@ -3,7 +3,11 @@
     <!-- I have access to both the artist object and the product object. -->
 <div class="product-container">
 
-<img src="<%=product.images[0]%>" alt="">
+<img src="<%=product.images%>" alt="">
+
+  <div class="product-info">
+
+
     <h2><%=product.title%></h2>
     <p><%=product.description%></p>
     <p><%=product.price%></p>
@@ -13,14 +17,18 @@
 <%} else{%>
   Sold out
 <%}%>
-
+  </div>
     </div>
 
 <div class="artist-container">
   <img src="<%=artist.profilePic%>" alt="<%=artist.firstName%>">
+<div class="artist-info">
 
-<h3> <%=artist.firstName%></h3>
+
+<h3><%=artist.firstName%> <%=artist.lastName%></h3>
   <p><%=artist.biography%></p>
+</div>
+  <a href="/artists/products/<%=artist._id%>">See all of <%=artist.firstName%>'s products.</a>
 </div>
 
 

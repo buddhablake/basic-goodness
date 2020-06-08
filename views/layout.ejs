@@ -3,6 +3,7 @@
   <head>
     <meta charset="utf-8">
     <title></title>
+    <script src="https://kit.fontawesome.com/4b72f81b1d.js" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="/css/main.css">
   </head>
   <body>
@@ -12,19 +13,17 @@
       </a>
 
       <nav>
-        <a href="/artists/sessions/new">Artist Log In</a>
-        <a href="/users/sessions/new">User Log In</a>
+
+        <%if(!user){%>
+        <a href="/users/sessions/new">Log In</a>
         <a href="/users/new">Sign Up</a>
+      <%}%>
 
 
         <%if(user && user.role === 'artist'){%>
-          <form class="" action="/artists/sessions?_method=DELETE" method="post">
-        <input type="submit" name="" value="Artist Log Out">
-          </form>
-        <%} else if(user && (user.role === 'user' || user.role === 'admin')) {%>
-          <form class="" action="/users/sessions?_method=DELETE" method="post">
-        <input type="submit" name="" value="User Log Out">
-          </form>
+              <%- include ('partials/artist-nav.ejs')%>
+            <%} else if(user && (user.role === 'user' || user.role === 'admin')) {%>
+              <%- include ('partials/user-nav.ejs')%>
         <%}%>
 
       </nav>
@@ -32,5 +31,7 @@
     </header>
 
     <%- body %>
+
+    <footer></footer>
   </body>
 </html>
