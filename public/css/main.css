@@ -88,7 +88,7 @@ nav {
 
 .collection {
   position: relative;
-  height: 80vh;
+  height: 65vh;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -103,7 +103,6 @@ nav {
   position: absolute;
   z-index: 0;
   border: 3px solid white;
-
   top: 15px;
   bottom: 15px;
   right: 15px;
@@ -259,7 +258,7 @@ footer {
   background: #fbdfc7;
 }
 
-@media only screen and (min-width: 1200px) {
+@media only screen and (min-width: 1000px) {
   .collections {
     grid-template-columns: 1fr 1fr;
   }
