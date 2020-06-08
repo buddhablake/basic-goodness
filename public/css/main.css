@@ -18,6 +18,7 @@ img {
 }
 
 .uniform {
+  display: -ms-grid;
   display: grid;
   grid-gap: 1em;
   margin: 2em auto;
@@ -41,10 +42,14 @@ body {
 }
 
 header {
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
 
   padding: 2em 3em;
   position: static;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
   align-items: center;
   height: 200px;
   /* background-image: url(https://images.unsplash.com/photo-1536000800373-5b5e6020910a?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1652&q=80); */
@@ -68,7 +73,13 @@ header p {
 }
 
 nav {
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
+
+  -webkit-box-align: center;
+
+  -ms-flex-align: center;
 
   align-items: center;
   position: absolute;
@@ -84,11 +95,13 @@ nav {
 
 .dropdown:hover .dropdown-content {
   opacity: 1;
+  -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=100)";
   z-index: 1;
 }
 
 .dropdown-content {
   opacity: 0;
+  -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=0)";
   position: absolute;
   background: white;
   z-index: -1;
@@ -103,6 +116,7 @@ nav {
 /* Root */
 
 .welcome {
+  display: -ms-grid;
   display: grid;
   grid-gap: 30px;
   text-align: center;
@@ -122,8 +136,12 @@ nav {
 }
 
 .collections {
+  display: -ms-grid;
   display: grid;
+  -ms-grid-columns: 1fr;
   grid-template-columns: 1fr;
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
   justify-content: center;
   grid-gap: 3em;
   padding: 1em 4em;
@@ -132,9 +150,18 @@ nav {
 .collection {
   position: relative;
   height: 65vh;
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -ms-flex-direction: column;
   flex-direction: column;
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
   justify-content: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
   align-items: center;
   color: white;
   background: rgba(0, 0, 0, 0.25);
@@ -155,15 +182,18 @@ nav {
 .collection img {
   width: 100%;
   height: 100%;
+  -o-object-fit: cover;
   object-fit: cover;
   position: absolute;
   z-index: -1;
   top: 0;
   left: 0;
+  -webkit-transition: all 0.5s ease;
   transition: all 0.5s ease;
 }
 
 .collection:hover img {
+  -webkit-transform: scale(1.03);
   transform: scale(1.03);
 }
 
@@ -194,8 +224,13 @@ nav {
 /* Collections Index page */
 
 .collection-title {
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
+  -ms-flex-pack: distribute;
   justify-content: space-around;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
   align-items: center;
   padding: 3em 0 2em 0;
 }
@@ -210,7 +245,9 @@ nav {
 }
 
 .products {
+  display: -ms-grid;
   display: grid;
+  -ms-grid-columns: 1fr;
   grid-template-columns: 1fr;
   padding: 0 4em 2em 4em;
 }
@@ -221,11 +258,13 @@ nav {
 .product img {
   width: 100%;
   height: 400px;
+  -o-object-fit: cover;
   object-fit: cover;
 }
 
 /*products index page */
 .products {
+  display: -ms-grid;
   display: grid;
   grid-gap: 3em;
 }
@@ -239,7 +278,9 @@ nav {
 
 /* show page  */
 .product-container {
+  display: -ms-grid;
   display: grid;
+  -ms-grid-columns: 1fr;
   grid-template-columns: 1fr;
   padding: 3em 2em 0 2em;
 }
@@ -255,6 +296,8 @@ nav {
 .controls {
   position: absolute;
   bottom: 0;
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
 }
 
@@ -266,6 +309,7 @@ nav {
   outline: none;
   border: none;
   font-size: 1.2em;
+  -webkit-transition: all 0.2s ease;
   transition: all 0.2s ease;
 }
 
@@ -277,6 +321,7 @@ nav {
 .product-info {
   padding: 2em;
   width: 100%;
+  display: -ms-grid;
   display: grid;
   grid-gap: 2em;
 }
@@ -290,6 +335,7 @@ nav {
   font-size: 25px;
   border: 2px solid black;
   font-family: "Georgia Pro";
+  -webkit-transition: all 0.2s ease;
   transition: all 0.2s ease;
   font-weight: 100;
   padding: 0.5em;
@@ -310,20 +356,26 @@ nav {
 .artist-container img {
   width: 200px;
   height: 200px;
+  -o-object-fit: cover;
   object-fit: cover;
+  -o-object-position: center;
   object-position: center;
   border-radius: 50%;
 }
 
 .artist-info {
   padding: 2em;
+  display: -ms-grid;
   display: grid;
+  -ms-grid-column-align: center;
   justify-items: center;
   grid-gap: 2em;
 }
 
 .artist-info div {
+  -ms-flex-item-align: center;
   align-self: center;
+  display: -ms-grid;
   display: grid;
   grid-gap: 1em;
 }
@@ -342,8 +394,11 @@ footer {
 /* error pages */
 .container-404 {
   padding: 6em 3em;
+  display: -ms-grid;
   display: grid;
+  -ms-grid-column-align: center;
   justify-items: center;
+  -ms-grid-row-align: center;
   align-items: center;
 }
 
@@ -363,21 +418,25 @@ footer {
 
 @media only screen and (min-width: 1000px) {
   .collections {
+    -ms-grid-columns: 1fr 1fr;
     grid-template-columns: 1fr 1fr;
   }
 
   .cutlery,
   .dinnerware,
   .decor {
+    -ms-grid-column: 1;
     grid-column-start: 1;
     grid-column-end: 3;
   }
 
   .products {
+    -ms-grid-columns: 1fr 1fr;
     grid-template-columns: 1fr 1fr;
   }
 
   .product-container {
+    -ms-grid-columns: 2fr 1fr;
     grid-template-columns: 2fr 1fr;
   }
 
@@ -389,6 +448,7 @@ footer {
   }
 
   .artist-info {
+    -ms-grid-columns: 1fr 3fr;
     grid-template-columns: 1fr 3fr;
   }
 }
