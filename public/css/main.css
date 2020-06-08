@@ -21,17 +21,36 @@ body {
 
 header {
   display: flex;
-  justify-content: space-between;
+
   padding: 2em 3em;
   position: static;
   align-items: center;
   height: 200px;
+  /* background-image: url(https://images.unsplash.com/photo-1536000800373-5b5e6020910a?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1652&q=80); */
+  background-position: center;
+  position: relative;
+  background: #fbdfc7;
+}
+
+header a {
+  text-decoration: none;
+}
+
+header h1 {
+  font-size: 3em;
+}
+
+header p {
+  font-size: 20px;
 }
 
 nav {
   display: flex;
-  height: 100%;
+
   align-items: center;
+  position: absolute;
+  top: 30px;
+  right: 30px;
 }
 
 .dropdown {
@@ -61,7 +80,8 @@ nav {
 /* Root */
 .collections {
   display: grid;
-
+  grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+  justify-content: center;
   grid-gap: 3em;
   padding: 2em 4em;
 }
@@ -73,7 +93,6 @@ nav {
   flex-direction: column;
   justify-content: center;
   align-items: center;
-
   color: white;
   background: rgba(0, 0, 0, 0.25);
   overflow: hidden;
@@ -84,7 +103,7 @@ nav {
   position: absolute;
   z-index: 0;
   border: 3px solid white;
-  background: rgba(0, 0, 0, 0.2);
+
   top: 15px;
   bottom: 15px;
   right: 15px;
@@ -121,7 +140,7 @@ nav {
 }
 
 .collection button {
-  background: rgba(0, 0, 0, 0.3);
+  background: transparent;
   outline: none;
   color: white;
   font-size: 20px;
@@ -178,15 +197,36 @@ nav {
 /* show page  */
 .product-container {
   display: grid;
-  grid-template-columns: 2fr 1fr;
+  grid-template-columns: 1fr;
+  padding: 2em;
 }
 
 .product-container img {
   width: 100%;
 }
 
-.artist-container {
-  display: flex;
+.product-info {
+  padding: 2em 1em;
+  width: 100%;
+  display: grid;
+  grid-gap: 2em;
+}
+
+.product-info button {
+  width: 75%;
+  justify-self: center;
+  background: transparent;
+  outline: none;
+  color: black;
+  font-size: 25px;
+  border: 3px solid black;
+  font-family: "Georgia Pro";
+  transition: all 0.2s ease;
+}
+
+.product-info button:hover {
+  background: #fbdfc7;
+  border: 3px solid white;
 }
 
 .artist-container img {
@@ -197,7 +237,37 @@ nav {
   border-radius: 50%;
 }
 
+.artist-info {
+  padding: 2em;
+  display: grid;
+  justify-items: center;
+  grid-gap: 2em;
+}
+
+.artist-info div {
+  align-self: center;
+}
+
+.artist-info a {
+  color: black;
+  font-weight: 400;
+  justify-self: end;
+}
+
 footer {
   min-height: 50vh;
-  background: #d9b07e;
+  background: #fbdfc7;
+}
+
+@media only screen and (min-width: 700px) {
+  .product-container {
+    grid-template-columns: 2fr 1fr;
+  }
+
+  .artist-container {
+  }
+
+  .artist-info {
+    grid-template-columns: 1fr 3fr;
+  }
 }

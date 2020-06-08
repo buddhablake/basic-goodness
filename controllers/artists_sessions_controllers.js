@@ -20,6 +20,12 @@ artistsSessions.get("/new", (req, res) => {
   });
 });
 
+artistsSessions.get("/update", (req, res) => {
+  res.render("artists/sessions/update.ejs", {
+    user: req.session.currentUser,
+  });
+});
+
 artistsSessions.post("/", (req, res) => {
   Artist.findOne({ email: req.body.email }, (err, foundArtist) => {
     if (err) {
@@ -42,6 +48,23 @@ artistsSessions.post("/", (req, res) => {
       }
     }
   });
+});
+
+artistsSessions.post("/update/:artistId", (req, res) => {
+  Artist.findByIdAndUpdate(
+    req.params.artistId,
+    req.body,
+    { new: true },
+    (err, updatedArtist) => {
+      if (err) {
+        res.send(
+          "There was an error updating your profile, please clikc the back button and try again."
+        );
+      } else {
+        res.redirect("/artists/products/" + req.params.artistId);
+      }
+    }
+  );
 });
 
 artistsSessions.delete("/", (req, res) => {

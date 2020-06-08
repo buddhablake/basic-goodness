@@ -10,25 +10,32 @@
 
     <h2><%=product.title%></h2>
     <p><%=product.description%></p>
-    <p><%=product.price%></p>
+
 
 <%if(product.qty > 0){%>
-  <p>In stock</p>
+  <button type="button" name="button">
+    Add to cart $<%=product.price%>
 <%} else{%>
   Sold out
+  </button>
 <%}%>
   </div>
     </div>
 
 <div class="artist-container">
-  <img src="<%=artist.profilePic%>" alt="<%=artist.firstName%>">
+
 <div class="artist-info">
+<img src="<%=artist.profilePic%>" alt="<%=artist.firstName%>">
+
+<div>
 
 
 <h3><%=artist.firstName%> <%=artist.lastName%></h3>
   <p><%=artist.biography%></p>
-</div>
   <a href="/artists/products/<%=artist._id%>">See all of <%=artist.firstName%>'s products.</a>
+  </div>
+</div>
+
 </div>
 
 
