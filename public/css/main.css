@@ -154,6 +154,7 @@ nav {
   display: flex;
   justify-content: space-around;
   align-items: center;
+  padding: 3em 0 2em 0;
 }
 
 .collection-title h1 {
@@ -167,8 +168,8 @@ nav {
 
 .products {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-  padding: 2em 4em;
+  grid-template-columns: 1fr;
+  padding: 0 4em 2em 4em;
 }
 
 .product {
@@ -197,7 +198,7 @@ nav {
 .product-container {
   display: grid;
   grid-template-columns: 1fr;
-  padding: 2em;
+  padding: 3em 2em 0 2em;
 }
 
 .product-container img {
@@ -205,7 +206,7 @@ nav {
 }
 
 .product-info {
-  padding: 2em 1em;
+  padding: 2em;
   width: 100%;
   display: grid;
   grid-gap: 2em;
@@ -218,14 +219,23 @@ nav {
   outline: none;
   color: black;
   font-size: 25px;
-  border: 3px solid black;
+  border: 2px solid black;
   font-family: "Georgia Pro";
   transition: all 0.2s ease;
+  font-weight: 100;
+  padding: 0.5em;
 }
 
 .product-info button:hover {
   background: #fbdfc7;
-  border: 3px solid white;
+  border: 2px solid white;
+}
+
+.artist-container {
+  border-top: 1px solid black;
+  border-bottom: 1px solid black;
+  margin: 3em;
+  padding: 1em 1em;
 }
 
 .artist-container img {
@@ -245,25 +255,58 @@ nav {
 
 .artist-info div {
   align-self: center;
+  display: grid;
+  grid-gap: 1em;
 }
 
-.artist-info a {
+.see-all {
   color: black;
   font-weight: 400;
-  justify-self: end;
+  font-size: 1.2em;
 }
 
 footer {
-  min-height: 50vh;
+  min-height: 20vh;
   background: #fbdfc7;
+}
+
+/* error pages */
+.container-404 {
+  padding: 6em 3em;
+  display: grid;
+  justify-items: center;
+  align-items: center;
+}
+
+.quote {
+  font-size: 30px;
+  width: 75%;
+  font-weight: 400;
+}
+
+.container-404 span {
+  font-size: 25px;
+  margin-bottom: 50px;
+}
+
+.container-404 p {
 }
 
 @media only screen and (min-width: 1000px) {
   .collections {
     grid-template-columns: 1fr 1fr;
   }
+
+  .products {
+    grid-template-columns: 1fr 1fr;
+  }
+
   .product-container {
     grid-template-columns: 2fr 1fr;
+  }
+
+  .product-info button {
+    padding: 15px;
   }
 
   .artist-container {

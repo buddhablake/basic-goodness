@@ -67,6 +67,12 @@ app.get("/", (req, res) => {
   });
 });
 
+app.get("*", function (req, res) {
+  res.status(404).render("errors/404.ejs", {
+    user: req.session.currentUser,
+  });
+});
+
 //___________________
 //Listener
 //___________________
