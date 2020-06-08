@@ -1,4 +1,5 @@
 @import url("https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@200;400&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Beth+Ellen&display=swap");
 
 * {
   margin: 0;
@@ -10,6 +11,26 @@
 * button {
   color: #261520;
   cursor: pointer;
+}
+
+img {
+  display: inline-block;
+}
+
+.uniform {
+  display: grid;
+  grid-gap: 1em;
+  margin: 2em auto;
+  width: 500px;
+  max-width: 80%;
+}
+
+.uniform input,
+.uniform textarea,
+.uniform select {
+  font-family: "Noto Serif JP", serif;
+  padding: 1em;
+  font-size: 1.2em;
 }
 
 body {
@@ -38,6 +59,8 @@ header a {
 
 header h1 {
   font-size: 3em;
+  /* font-family: "Beth Ellen", cursive; */
+  color: white;
 }
 
 header p {
@@ -78,12 +101,32 @@ nav {
 }
 
 /* Root */
+
+.welcome {
+  display: grid;
+  grid-gap: 30px;
+  text-align: center;
+  width: 700px;
+  max-width: 80%;
+  margin: 0 auto 1em auto;
+  padding: 3em 0 0 0;
+  border-bottom: 1px solid black;
+}
+
+.welcome h2 {
+  font-size: 3em;
+}
+
+.welcome p {
+  font-size: 1.3em;
+}
+
 .collections {
   display: grid;
   grid-template-columns: 1fr;
   justify-content: center;
   grid-gap: 3em;
-  padding: 2em 4em;
+  padding: 1em 4em;
 }
 
 .collection {
@@ -201,8 +244,34 @@ nav {
   padding: 3em 2em 0 2em;
 }
 
-.product-container img {
+.img-container {
+  position: relative;
+}
+
+.img-container img {
   width: 100%;
+}
+
+.controls {
+  position: absolute;
+  bottom: 0;
+  display: flex;
+}
+
+.controls input,
+.controls button {
+  background: #fbdfc7;
+  padding: 0.5em;
+  font-family: "Noto Serif JP", serif;
+  outline: none;
+  border: none;
+  font-size: 1.2em;
+  transition: all 0.2s ease;
+}
+
+.controls input:hover,
+.controls button:hover {
+  background: #b4c4d9;
 }
 
 .product-info {
@@ -295,6 +364,13 @@ footer {
 @media only screen and (min-width: 1000px) {
   .collections {
     grid-template-columns: 1fr 1fr;
+  }
+
+  .cutlery,
+  .dinnerware,
+  .decor {
+    grid-column-start: 1;
+    grid-column-end: 3;
   }
 
   .products {

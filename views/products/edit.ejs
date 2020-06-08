@@ -4,11 +4,10 @@
 
 
 
-<form class="" action="/products/<%=product._id%>?_method=PUT" method="post">
-      <fieldset>
-        <legend>
-          Update Product
-        </legend>
+<form class="uniform" action="/products/<%=product._id%>?_method=PUT" method="post">
+
+        <h2>Update Product</h2>
+
 
         <label for="title">Title</label>
         <input type="text" id="title" name="title" value="<%=product.title%>">
@@ -16,13 +15,12 @@
         <label for="description">Description</label>
         <textarea name="description" rows="8" id="description"><%=product.description%></textarea>
 
-        <fieldset>
-          <legend>Product Image</legend>
+    <label for="product-image"> Product Image</label>
 
-        <input type="url" name="images" value="<%=product.images%>" required>
+        <input type="url" id="product-image" name="images" value="<%=product.images%>" required>
 
 
-            </fieldset>
+
 
         <label for="price">Price</label>
         <input type="number" id="price" name="price" value="<%=product.price%>">
@@ -63,7 +61,7 @@
           >Decor</option>
         </select>
         <input type="submit" name="" value="Update">
-      </fieldset>
+
     </form>
 <%}else {%>
   <p>Sorry you don't have access to this page. <a href="/">Click here to return to the home page.</a></p>

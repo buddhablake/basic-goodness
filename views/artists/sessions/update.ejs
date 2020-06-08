@@ -1,10 +1,9 @@
 <%if(user && user.role === 'artist'){%>
 
-  <form class="artists-registration" action="/artists/sessions/update/<%=user._id%>" method="post">
-    <fieldset>
-      <legend>
-      Hey, <%=user.firstName%>. What would you like to change?
-      </legend>
+  <form class="artists-registration uniform" action="/artists/sessions/update/<%=user._id%>" method="post">
+
+      <h2>Hey, <%=user.firstName%>. What would you like to change?</h2>
+
 
       <label for="first-name">First Name</label>
       <input type="text" id="first-name" name="firstName" value="<%=user.firstName%>" required>
@@ -22,7 +21,7 @@
       <input type="email" id="email" name="email" value="<%=user.email%>" required>
 
       <input type="submit" name="" value="submit">
-    </fieldset>
+    
   </form>
 
 <%}%>
