@@ -56,7 +56,7 @@ It didn't take me long to realize that good error handling is an art in and of i
 
 ---
 
-##Future Features
+## Future Features
 
 - Shopping Cart and Checkout Functionality
 - Customer Reviews w/ photos
