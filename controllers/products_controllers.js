@@ -84,6 +84,7 @@ products.get("/:artistId/:id", (req, res) => {
             product: product,
             artist: artist,
             user: req.session.currentUser,
+            success: req.flash("success"),
           });
         }
       });
@@ -102,6 +103,7 @@ products.post("/", (req, res) => {
     if (err) {
       res.send(err.message);
     } else {
+      req.flash("success", "New product successfully added.");
       res.redirect("/products/" + newProduct.artist_id + "/" + newProduct._id);
     }
   });
@@ -137,7 +139,8 @@ products.delete("/delete/:id", (req, res) => {
         "Something went wrong on our end. Please click the back button and try your request again."
       );
     } else {
-      res.redirect("/");
+      req.flash("deleted", "Product successfully deleted.");
+      res.redirect("/artists/products/" + deletedProduct.artist_id);
     }
   });
 });

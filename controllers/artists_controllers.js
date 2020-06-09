@@ -33,11 +33,13 @@ artists.get("/products/:artistId", (req, res) => {
             "Oh no. Something didn't go as expected. That's ok, it happens. Just go back and try again."
           );
         } else {
-          console.log(req.session.currentUser);
+          const deleted = req.flash("deleted");
           res.render("products/artist-index.ejs", {
             products: products,
             artist: artist,
+            session: req.session,
             user: req.session.currentUser,
+            deleted: deleted,
           });
         }
       });

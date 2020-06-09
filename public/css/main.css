@@ -388,6 +388,8 @@ nav {
   font-size: 1.2em;
 }
 
+/* Footer  */
+
 footer {
   min-height: 20vh;
   background: #fbdfc7;
@@ -418,6 +420,25 @@ footer {
 .container-404 p {
 }
 
+/* flash messages */
+.new-product-success,
+.deleted-product-success {
+  margin: 30px auto 0 auto;
+  width: 500px;
+  text-align: center;
+  max-width: 80%;
+  padding: 30px;
+}
+
+.new-product-success {
+  background: #e5f7e5;
+}
+
+.deleted-product-success {
+  background: #deedff;
+}
+
+/* Media Queries */
 @media only screen and (min-width: 1000px) {
   .collections {
     -ms-grid-columns: 1fr 1fr;

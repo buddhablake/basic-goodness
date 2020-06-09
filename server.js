@@ -3,6 +3,8 @@ const methodOverride = require("method-override");
 const mongoose = require("mongoose");
 const session = require("express-session");
 const expressLayouts = require("express-ejs-layouts");
+const cookieParser = require("cookie-parser");
+const flash = require("connect-flash");
 const app = express();
 const db = mongoose.connection;
 require("dotenv").config();
@@ -12,9 +14,8 @@ app.set("view engine", "ejs");
 app.use(express.static("public"));
 app.use(express.urlencoded({ extended: false })); //
 app.use(expressLayouts);
-//use method override
-app.use(methodOverride("_method")); // allow POST, PUT and DELETE from a form
-
+app.use(methodOverride("_method"));
+app.use(cookieParser());
 app.use(
   session({
     secret: process.env.SECRET,
@@ -22,12 +23,14 @@ app.use(
     saveUninitialized: false,
   })
 );
+app.use(flash());
 
+//=====================
+//MONGODB AND mongoose
+//=====================
 const PORT = process.env.PORT;
 const MONGODB_URI = process.env.MONGODB_URI;
-// Connect to Mongo &
-// Fix Depreciation Warnings from Mongoose
-// May or may not need these depending on your Mongoose version
+
 mongoose.connect(MONGODB_URI, {
   useNewUrlParser: true,
   useUnifiedTopology: true,

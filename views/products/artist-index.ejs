@@ -1,4 +1,10 @@
 
+
+<%if(deleted.length > 0){%>
+<div class="deleted-product-success">
+  <%= deleted %>
+</div>
+<%}%>
 <div class="artist-container">
 <div class="artist-info">
   <img src="<%=artist.profilePic%>" alt="<%=artist.firstName%>">
