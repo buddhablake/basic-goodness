@@ -60,7 +60,7 @@ It didn't take me long to realize that good error handling is an art in and of i
 
 - Shopping Cart and Checkout Functionality
 - Customer Reviews w/ photos
-- Ability for users to like/heart and item and access it later
+- Ability for users to like/heart an item and access it later
 - Order, Shipping, and Follow-up Emails
 - Similar Products Section
 - Social Sharing
