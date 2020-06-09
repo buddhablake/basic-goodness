@@ -39,6 +39,7 @@ body {
   font-family: "Noto Serif JP", serif;
   font-weight: 200;
   color: #261520;
+  min-height: 100vh;
 }
 
 header {
@@ -395,6 +396,27 @@ footer {
   background: #fbdfc7;
 }
 
+/* login pages */
+.login-container,
+.signup-container {
+  position: relative;
+  text-align: center;
+  padding: 2em 0;
+}
+
+.login-container h2,
+.signup-container h2 {
+  font-size: 2em;
+}
+
+.login-container a,
+.signup-container a {
+  position: absolute;
+  right: 20px;
+  top: 10px;
+  font-size: 20px;
+}
+
 /* error pages */
 .container-404 {
   padding: 6em 3em;
@@ -422,7 +444,8 @@ footer {
 
 /* flash messages */
 .new-product-success,
-.deleted-product-success {
+.deleted-product-success,
+.login-error {
   margin: 30px auto 0 auto;
   width: 500px;
   text-align: center;
@@ -436,6 +459,10 @@ footer {
 
 .deleted-product-success {
   background: #deedff;
+}
+
+.login-error {
+  background: #ff13137a;
 }
 
 /* Media Queries */

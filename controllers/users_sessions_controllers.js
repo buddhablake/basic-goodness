@@ -17,6 +17,9 @@ const usersSessions = express.Router();
 usersSessions.get("/new", (req, res) => {
   res.render("users/sessions/new.ejs", {
     user: req.session.currentUser,
+    dbError: req.flash("dbError"),
+    usernameError: req.flash("usernameError"),
+    passError: req.flash("passError"),
   });
 });
 
@@ -24,22 +27,28 @@ usersSessions.post("/", (req, res) => {
   User.findOne({ email: req.body.email }, (err, foundUser) => {
     if (err) {
       console.log(err);
-      res.send(
-        'Yikes something went wrong. <a href="/users/sessions/new">Click here</a> to try again.'
+      req.flash(
+        "dbError",
+        "Something went wrong on our end. Please try logging in again."
       );
+      res.redirect("/users/sessions/new");
     } else if (!foundUser) {
-      res.send(
-        'Hmmm that user does not seem to exist. <a href="/users/sessions/new">Click here</a> to try again.'
+      req.flash(
+        "usernameError",
+        "The email and/or password you provided were incorrect. Please try again."
       );
+      res.redirect("/users/sessions/new");
     } else {
       if (bcrypt.compareSync(req.body.password, foundUser.password)) {
         req.session.currentUser = foundUser;
         // console.log(req.session.currentUser.id);
         res.redirect("/");
       } else {
-        res.send(
-          'Hmmm that password does not seem to match. <a href="/users/sessions/new">Click here</a> to try again.'
+        req.flash(
+          "passError",
+          "The email and/or password you provided were incorrect. Please try again."
         );
+        res.redirect("/users/sessions/new");
       }
     }
   });

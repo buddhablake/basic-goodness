@@ -1,4 +1,25 @@
+<% if(usernameError.length > 0){%>
 
+  <div class="login-error">
+    <%= usernameError %>
+</div>
+
+<%}else if(passError.length > 0){%>
+
+  <div class="login-error">
+    <%= passError %>
+</div>
+
+<%}else if(dbError.length > 0){%>
+
+  <div class="login-error">
+    <%= dbError %>
+</div>
+
+<%}%>
+
+<div class="login-container">
+<h2>Artist Login</h2>
 
 
     <form class="uniform" action="/artists/sessions" method="post">
@@ -10,3 +31,4 @@
 
       <input type="submit" name="" value="Log In">
     </form>
+</div>

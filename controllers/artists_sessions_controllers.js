@@ -15,8 +15,13 @@ const artistsSessions = express.Router();
 //============
 
 artistsSessions.get("/new", (req, res) => {
+  console.log(req.session);
+
   res.render("artists/sessions/new.ejs", {
     user: req.session.currentUser,
+    dbError: req.flash("dbError"),
+    usernameError: req.flash("usernameError"),
+    passError: req.flash("passError"),
   });
 });
 
@@ -35,21 +40,27 @@ artistsSessions.post("/", (req, res) => {
   Artist.findOne({ email: req.body.email }, (err, foundArtist) => {
     if (err) {
       console.log(err);
-      res.send(
-        'Yikes something went wrong. <a href="artists/sessions/new">Click here</a> to try again.'
+      req.flash(
+        "dbError",
+        "Something went wrong on our end. Please try logging in again."
       );
+      res.redirect("/artists/sessions/new");
     } else if (!foundArtist) {
-      res.redirect("/artists/sessions/new", {
-        errMsg: "Test",
-      });
+      req.flash(
+        "usernameError",
+        "The email and/or password you provided were incorrect. Please try again."
+      );
+      res.redirect("/artists/sessions/new");
     } else {
       if (bcrypt.compareSync(req.body.password, foundArtist.password)) {
         req.session.currentUser = foundArtist;
         res.redirect("/artists/products/" + foundArtist._id);
       } else {
-        res.send(
-          'Hmmm that password does not seem to match. <a href="artists/sessions/new">Click here</a> to try again.'
+        req.flash(
+          "passError",
+          "The email and/or password you provided were incorrect. Please try again."
         );
+        res.redirect("/artists/sessions/new");
       }
     }
   });
