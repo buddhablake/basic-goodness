@@ -22,7 +22,9 @@ const isArtist = (req, res, next) => {
   ) {
     next();
   } else {
-    res.send("You shall not pass!");
+    res.status(404).render("errors/404.ejs", {
+      user: req.session.currentUser,
+    });
   }
 };
 
@@ -100,7 +102,7 @@ products.post("/", (req, res) => {
     if (err) {
       res.send(err.message);
     } else {
-      res.redirect("/");
+      res.redirect("/products/" + newProduct.artist_id + "/" + newProduct._id);
     }
   });
 });

@@ -26,7 +26,7 @@ users.post("/", (req, res) => {
     if (err) {
       res.send(err.message);
     } else {
-      res.redirect("/");
+      res.redirect("/users/sessions/new");
     }
   });
 });

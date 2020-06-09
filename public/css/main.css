@@ -339,11 +339,13 @@ nav {
   transition: all 0.2s ease;
   font-weight: 100;
   padding: 0.5em;
+  max-height: 80px;
 }
 
 .product-info button:hover {
   background: #fbdfc7;
   border: 2px solid white;
+  color: white;
 }
 
 .artist-container {

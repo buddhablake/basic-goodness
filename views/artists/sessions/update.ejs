@@ -1,4 +1,4 @@
-<%if(user && user.role === 'artist'){%>
+
 
   <form class="artists-registration uniform" action="/artists/sessions/update/<%=user._id%>" method="post">
 
@@ -21,7 +21,5 @@
       <input type="email" id="email" name="email" value="<%=user.email%>" required>
 
       <input type="submit" name="" value="submit">
-    
-  </form>
 
-<%}%>
+  </form>

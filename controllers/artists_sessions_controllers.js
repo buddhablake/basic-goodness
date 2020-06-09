@@ -21,9 +21,14 @@ artistsSessions.get("/new", (req, res) => {
 });
 
 artistsSessions.get("/update", (req, res) => {
-  res.render("artists/sessions/update.ejs", {
-    user: req.session.currentUser,
-  });
+  const user = req.session.currentUser;
+  if (user && user.role === "artist") {
+    res.render("artists/sessions/update.ejs", {
+      user: user,
+    });
+  } else {
+    res.redirect("/");
+  }
 });
 
 artistsSessions.post("/", (req, res) => {
@@ -34,13 +39,13 @@ artistsSessions.post("/", (req, res) => {
         'Yikes something went wrong. <a href="artists/sessions/new">Click here</a> to try again.'
       );
     } else if (!foundArtist) {
-      res.send(
-        'Hmmm that user does not seem to exist. <a href="artists/sessions/new">Click here</a> to try again.'
-      );
+      res.redirect("/artists/sessions/new", {
+        errMsg: "Test",
+      });
     } else {
       if (bcrypt.compareSync(req.body.password, foundArtist.password)) {
         req.session.currentUser = foundArtist;
-        res.redirect("/");
+        res.redirect("/artists/products/" + foundArtist._id);
       } else {
         res.send(
           'Hmmm that password does not seem to match. <a href="artists/sessions/new">Click here</a> to try again.'
