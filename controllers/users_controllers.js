@@ -11,6 +11,7 @@ const users = express.Router();
 users.get("/new", (req, res) => {
   res.render("users/new.ejs", {
     user: req.session.currentUser,
+    emailNotUnique: req.flash("emailNotUnique"),
   });
 });
 
@@ -24,8 +25,16 @@ users.post("/", (req, res) => {
   //creates the new user
   User.create(req.body, (err, newUser) => {
     if (err) {
-      res.send(err.message);
+      req.flash(
+        "emailNotUnique",
+        "That email is already in use. Please try a new one or log in with your existing account. "
+      );
+      res.redirect("/users/new");
     } else {
+      req.flash(
+        "newUserSuccess",
+        "Your account was successfully created. You may log in below."
+      );
       res.redirect("/users/sessions/new");
     }
   });

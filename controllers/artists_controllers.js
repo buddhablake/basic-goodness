@@ -17,6 +17,7 @@ const artists = express.Router();
 artists.get("/new", (req, res) => {
   res.render("artists/new.ejs", {
     user: req.session.currentUser,
+    emailNotUnique: req.flash("emailNotUnique"),
   });
 });
 
@@ -60,8 +61,16 @@ artists.post("/", (req, res) => {
   //creates the new user
   Artist.create(req.body, (err, newUser) => {
     if (err) {
-      res.send(err.message);
+      req.flash(
+        "emailNotUnique",
+        "That email is already in use. Please try a new one or log in with your existing account. "
+      );
+      res.redirect("/artists/new");
     } else {
+      req.flash(
+        "newUserSuccess",
+        "Your account was successfully created. You may log in below."
+      );
       res.redirect("/artists/sessions/new");
     }
   });

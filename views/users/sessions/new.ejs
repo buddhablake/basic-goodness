@@ -1,21 +1,25 @@
 <% if(usernameError.length > 0){%>
 
-  <div class="login-error">
+  <div class="error">
     <%= usernameError %>
 </div>
 
 <%}else if(passError.length > 0){%>
 
-  <div class="login-error">
+  <div class="error">
     <%= passError %>
 </div>
 
 <%}else if(dbError.length > 0){%>
 
-  <div class="login-error">
+  <div class="error">
     <%= dbError %>
 </div>
 
+<%} else if(newUserSuccess.length > 0){%>
+  <div class="success">
+    <%= newUserSuccess%>
+</div>
 <%}%>
 
 <div class="login-container">

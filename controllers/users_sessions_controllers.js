@@ -15,11 +15,13 @@ const usersSessions = express.Router();
 //============
 
 usersSessions.get("/new", (req, res) => {
+  // const newUserSuccess;
   res.render("users/sessions/new.ejs", {
     user: req.session.currentUser,
     dbError: req.flash("dbError"),
     usernameError: req.flash("usernameError"),
     passError: req.flash("passError"),
+    newUserSuccess: req.flash("newUserSuccess"),
   });
 });
 
@@ -56,7 +58,6 @@ usersSessions.post("/", (req, res) => {
 
 usersSessions.delete("/", (req, res) => {
   req.session.destroy(() => {
-    console.log("it worked");
     res.redirect("/");
   });
 });

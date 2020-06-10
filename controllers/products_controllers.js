@@ -74,7 +74,7 @@ products.get("/:collection", (req, res) => {
 products.get("/:artistId/:id", (req, res) => {
   Product.findOne({ _id: req.params.id }, (err, product) => {
     if (err) {
-      res.send(err.message);
+      res.redirect("*");
     } else {
       Artist.findOne({ _id: req.params.artistId }, (err, artist) => {
         if (err) {

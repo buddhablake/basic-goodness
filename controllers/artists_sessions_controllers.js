@@ -15,13 +15,12 @@ const artistsSessions = express.Router();
 //============
 
 artistsSessions.get("/new", (req, res) => {
-  console.log(req.session);
-
   res.render("artists/sessions/new.ejs", {
     user: req.session.currentUser,
     dbError: req.flash("dbError"),
     usernameError: req.flash("usernameError"),
     passError: req.flash("passError"),
+    newUserSuccess: req.flash("newUserSuccess"),
   });
 });
 
@@ -39,7 +38,6 @@ artistsSessions.get("/update", (req, res) => {
 artistsSessions.post("/", (req, res) => {
   Artist.findOne({ email: req.body.email }, (err, foundArtist) => {
     if (err) {
-      console.log(err);
       req.flash(
         "dbError",
         "Something went wrong on our end. Please try logging in again."
