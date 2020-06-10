@@ -42,6 +42,7 @@ products.get("/new", isArtist, (req, res) => {
   });
 });
 
+//PRODUCT EDIT PAGE
 products.get("/edit/:id", (req, res) => {
   Product.findOne({ _id: req.params.id }, (err, product) => {
     if (err) {
@@ -55,7 +56,7 @@ products.get("/edit/:id", (req, res) => {
   });
 });
 
-//Collections Indexes
+//COLLECTION INDEX
 products.get("/:collection", (req, res) => {
   Product.find({ category: req.params.collection }, (err, products) => {
     if (err) {
@@ -70,7 +71,7 @@ products.get("/:collection", (req, res) => {
   });
 });
 
-// product show page
+// PRODUCT SHOW PAGE
 products.get("/:artistId/:id", (req, res) => {
   Product.findOne({ _id: req.params.id }, (err, product) => {
     if (err) {
@@ -95,7 +96,7 @@ products.get("/:artistId/:id", (req, res) => {
 //=============
 //CREATE
 //============
-//Creates new product
+//CREATES NEW PRODUCT
 products.post("/", (req, res) => {
   req.body.artist_id = req.session.currentUser._id;
 
@@ -112,6 +113,7 @@ products.post("/", (req, res) => {
 //=============
 //EDIT/UPDATE
 //============
+//UPDATE PUT ROUTE
 products.put("/:id", (req, res) => {
   Product.findByIdAndUpdate(
     req.params.id,
@@ -132,6 +134,7 @@ products.put("/:id", (req, res) => {
 //=============
 //DELETE
 //============
+//DELETE PRODUCT ROUTE
 products.delete("/delete/:id", (req, res) => {
   Product.findByIdAndRemove(req.params.id, (err, deletedProduct) => {
     if (err) {

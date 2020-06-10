@@ -14,6 +14,7 @@ const artistsSessions = express.Router();
 //Routes
 //============
 
+//ARTIST LOGIN PAGE
 artistsSessions.get("/new", (req, res) => {
   res.render("artists/sessions/new.ejs", {
     user: req.session.currentUser,
@@ -24,6 +25,7 @@ artistsSessions.get("/new", (req, res) => {
   });
 });
 
+//ARTIST UPDATE PAGE
 artistsSessions.get("/update", (req, res) => {
   const user = req.session.currentUser;
   if (user && user.role === "artist") {
@@ -35,6 +37,25 @@ artistsSessions.get("/update", (req, res) => {
   }
 });
 
+//ARTIST UPDATE POST ROUTE
+artistsSessions.post("/update/:artistId", (req, res) => {
+  Artist.findByIdAndUpdate(
+    req.params.artistId,
+    req.body,
+    { new: true },
+    (err, updatedArtist) => {
+      if (err) {
+        res.send(
+          "There was an error updating your profile, please click the back button and try again."
+        );
+      } else {
+        res.redirect("/artists/products/" + req.params.artistId);
+      }
+    }
+  );
+});
+
+//ARTIST LOGIN POST ROUTE
 artistsSessions.post("/", (req, res) => {
   Artist.findOne({ email: req.body.email }, (err, foundArtist) => {
     if (err) {
@@ -64,23 +85,7 @@ artistsSessions.post("/", (req, res) => {
   });
 });
 
-artistsSessions.post("/update/:artistId", (req, res) => {
-  Artist.findByIdAndUpdate(
-    req.params.artistId,
-    req.body,
-    { new: true },
-    (err, updatedArtist) => {
-      if (err) {
-        res.send(
-          "There was an error updating your profile, please clikc the back button and try again."
-        );
-      } else {
-        res.redirect("/artists/products/" + req.params.artistId);
-      }
-    }
-  );
-});
-
+//ARTIST LOG OUT ROUTE
 artistsSessions.delete("/", (req, res) => {
   req.session.destroy(() => {
     res.redirect("/");

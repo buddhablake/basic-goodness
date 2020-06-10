@@ -13,6 +13,7 @@ const artists = express.Router();
 //=======
 //READ
 //=======
+
 //REGISTRATION PAGE
 artists.get("/new", (req, res) => {
   res.render("artists/new.ejs", {
@@ -21,6 +22,7 @@ artists.get("/new", (req, res) => {
   });
 });
 
+//ARTIST INDEX PAGE
 artists.get("/products/:artistId", (req, res) => {
   Product.find({ artist_id: req.params.artistId }, (err, products) => {
     if (err) {
@@ -51,6 +53,8 @@ artists.get("/products/:artistId", (req, res) => {
 //=======
 //CREATE
 //=======
+
+//CREATES A NEW ARTIST
 artists.post("/", (req, res) => {
   //overwrite the user password with the hashed password
   req.body.password = bcrypt.hashSync(

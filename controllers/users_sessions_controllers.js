@@ -14,6 +14,7 @@ const usersSessions = express.Router();
 //Routes
 //============
 
+//USER LOGIN PAGE
 usersSessions.get("/new", (req, res) => {
   // const newUserSuccess;
   res.render("users/sessions/new.ejs", {
@@ -25,6 +26,7 @@ usersSessions.get("/new", (req, res) => {
   });
 });
 
+//USER LOGIN POST ROUTE
 usersSessions.post("/", (req, res) => {
   User.findOne({ email: req.body.email }, (err, foundUser) => {
     if (err) {
@@ -56,6 +58,7 @@ usersSessions.post("/", (req, res) => {
   });
 });
 
+//USER LOGOUT ROUTE
 usersSessions.delete("/", (req, res) => {
   req.session.destroy(() => {
     res.redirect("/");

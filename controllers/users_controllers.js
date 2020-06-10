@@ -7,7 +7,7 @@ const User = require("../models/users.js");
 
 const users = express.Router();
 
-//test route
+//USER REGISTRATION ROUTE
 users.get("/new", (req, res) => {
   res.render("users/new.ejs", {
     user: req.session.currentUser,
@@ -15,6 +15,7 @@ users.get("/new", (req, res) => {
   });
 });
 
+//CREATE USER ROUTE
 users.post("/", (req, res) => {
   //overwrite the user password with the hashed password
   req.body.password = bcrypt.hashSync(
