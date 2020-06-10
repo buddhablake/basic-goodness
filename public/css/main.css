@@ -34,6 +34,13 @@ img {
   font-size: 1.2em;
 }
 
+.uniform input[type="submit"] {
+  background: #676767;
+  color: white;
+  border: none;
+  font-family: "Georgia pro";
+}
+
 body {
   /* background: #d4ab807a; */
   font-family: "Noto Serif JP", serif;
